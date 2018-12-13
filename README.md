@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This short lesson summarizes key takeaways from section 32
+This short lesson summarizes key takeaways from section 33.
 
 ## Objectives
 You will be able to:
@@ -13,21 +13,19 @@ You will be able to:
 ## Key Takeaways
 
 The key takeaways from this section include:
-* The delphi technique suggests that multiple independent estimates will be more consistently accurate than any single estimate
-* Because of this, ensemble techniques are a powerful way for improving the quality of your models
-* Sometimes you'll use model stacking or meta-ensembles where you use of combination of different types of model for your ensemble
-* It's also common to have multiple similar models in an ensemble - e.g. a bunch of decision trees
-* Bagging (Bootstrap AGGregation) is a technique that leverages Bootstrap Resampling and Aggregation
-* Bootstrap resampling uses multiple smaller samples from the test data set to create independent estimates, and aggregation is the combining of those estimates to make predictions
-* A random forest is an ensemble method for decision trees using Bagging and the Subspace Sampling Method to create variance among the trees
-* With a random forest, for each tree, we sample using 2/3 of the training data and the remaining third is used to calculate the Out-of-Bag Error
-* In addition, the Subspace Sampling Method is used to further increase variability by randomly selecting the subset of features to use as predictors for training any given tree
-* GridsearchCV is an exhaustive search technique for finding optimal combinations of hyper parameters by calculating for every combination of parameter values you put into the search
-* Gradient boosting leverages an ensemble of weak learners (weak models) to create a strong combined model
-* Boosting (when compared to random forests) is an interative rather than independent process, using each model to strengthen the weaknesses of the previous ones
-* Two of the most common algorithms for Boosting are Adaboost (Adaptive Boosting) and Gradient Boosted Trees
-* Adaboost creates new classifiers by continually influencing the distribution of the data sampled to train each successive tree
-* Gradient Boosted Trees are a more advanced boosting algorithm that makes use of Gradient Descent
-* XGBoost (eXtreme Gradient Boosting) is one of the top gradient boosting algorithms currently in use
-* XGBoost is a stand-alone library that implements popular gradient boosting algorithms in the fastest, most performant way possible
+* Support Vector Machines can be used for regression tasks, although they're better known as a powerful algorithm for classification.
+* SVMs optimize for maximizing the margin between the decision boundary and the nearest data points (the support vectors)
+* For data that isn't linearly seperable (no single straight line will correctly classify all of the observations into the correct categpries) a soft margin classifier can be used to allow for a model that may mis-classify some of the training data points
+* You can improve the performance of your SVMs for data sets where a linear decision boundary isn't very useful by using the kernel trick
+* With the kernel trick, you project your data set into a higher dimensional space 
+* The Gaussian/Radial Basis Function (RBF) kernel provides you with tro hyper parameters - C and Gamma
+* C allows you to trade off between misclassification of the training set and simplicity of the decision function (to avoid overfitting). It's common to all kernels
+* Gamma allows you to define how much influence a single training example has
+* The polynomial kernel is specified as $$(\gamma \langle  x -  x' \rangle+r)^d $$
+* The sigmoid kernel is specified as $$\tanh ( \gamma\langle  x -  x' \rangle+r) $$
+* Based on the "no free lunch" theorum, there's no kernel that is guaranteed to be better for a given training set than others, but the RBF kernel is often a good default to start with
+* in Scikit-learn, the SVC method is one classifier supporting multiple kernels. It takes C as the penalty parameter and additional kernel specific parameters such as degree (for polynomail) and gamma (for RBF, polynomial and sigmoid) https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+* There are other implementations of SVM built into Scikit-learn. For example:
+    * NuSVC introduces $\nu$ (pronounced "nu") creates an upper bound on training errors and a lower bound on support vectors
+    * LinearSVC is a "one-vs-rest" method which often scales better for cases with many potential classes 
 
